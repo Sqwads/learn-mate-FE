@@ -49,7 +49,7 @@ export default function TeacherDashboardContent({
 		const getClasses = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/?user_id=${session?.user.id}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/?user_id=${session?.user.id}`,
 				)
 				.then((response) => {
 					// console.log(response.data);

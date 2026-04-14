@@ -63,7 +63,7 @@ export default function StudentDashboard({
 		const getClasses = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/student?user_id=${session?.user.id}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/student?user_id=${session?.user.id}`,
 				)
 				.then((response) => {
 					if (response.status == 200) {
@@ -86,7 +86,7 @@ export default function StudentDashboard({
 	async function getAssignments() {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/assignments/student/${session?.user.id}/?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/assignments/student/${session?.user.id}/?user_id=${session?.user.id}`,
 			)
 			.then((response) => {
 				setAssignments(response.data);
@@ -97,7 +97,7 @@ export default function StudentDashboard({
 	const getAttendance = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/attendance/student/${session?.user.id}?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/attendance/student/${session?.user.id}?user_id=${session?.user.id}`,
 			)
 			.then((response) => {
 				if (response.status == 200) {
@@ -114,7 +114,7 @@ export default function StudentDashboard({
 	const getSubmitted = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/submissions/my?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/submissions/my?user_id=${session?.user.id}`,
 			)
 			.then((response) => {
 				setSubmittedAssignments(response.data);
@@ -124,7 +124,7 @@ export default function StudentDashboard({
 	const getGrades = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/grades/my?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/grades/my?user_id=${session?.user.id}`,
 			)
 			.then((response) => {
 				setGrades(response.data);

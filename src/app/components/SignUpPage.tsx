@@ -52,7 +52,7 @@ export default function SignUpPage({ onLogin, onSignUp }: LoginPageProps) {
 		// 		if (response.data.session?.access_token) {
 		// 			// console.log(response.data);
 		// 			await axios.post(
-		// 				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/schools?user_id=${response.data.user?.id}`,
+		// 				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/schools?user_id=${response.data.user?.id}`,
 		// 				{ 'school_name': schoolName, 'admin_id': response.data.user?.id },
 		// 			);
 		// 			onLogin(response.data);
@@ -65,7 +65,7 @@ export default function SignUpPage({ onLogin, onSignUp }: LoginPageProps) {
 		// 	});
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/auth/signup`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/auth/signup`,
 				{
 					email,
 					password,

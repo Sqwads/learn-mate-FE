@@ -83,7 +83,7 @@ export default function AttendanceTab({
 		const getAttendance = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/attendance/class/${selectedClass.id}?user_id=${session?.user.id}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/attendance/class/${selectedClass.id}?user_id=${session?.user.id}`,
 				)
 				.then((response) => {
 					setAttendaceHistory(response.data);
@@ -108,7 +108,7 @@ export default function AttendanceTab({
 		// In a real app, this would save to the backend
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/attendance/bulk?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/attendance/bulk?user_id=${session?.user.id}`,
 				{ attendances: attendanceRecords },
 			)
 			.then(() => {

@@ -39,7 +39,7 @@ export default function AddStudentToClassDialog({
 	const handleAddStudent = async (student_id: string) => {
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/${id}/students?user_id=${admin_id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/${id}/students?user_id=${admin_id}`,
 				{
 					student_id,
 				},
@@ -61,7 +61,7 @@ export default function AddStudentToClassDialog({
 	const handleRemoveStudent = async (student_id: string) => {
 		await axios
 			.delete(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/${id}/students/${student_id}?user_id=${admin_id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/${id}/students/${student_id}?user_id=${admin_id}`,
 			)
 			.then((response) => {
 				const filtered = studentsIn.filter((u) => u.id !== student_id);

@@ -56,7 +56,7 @@ export default function AssignmentsTab({
 			setLoading(true);
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/assignments/class/${selectedClass.id}/?user_id=${teacher_id}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/assignments/class/${selectedClass.id}/?user_id=${teacher_id}`,
 				)
 				.then((response) => {
 					setAssignments(response.data);
@@ -102,7 +102,7 @@ export default function AssignmentsTab({
 		}
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/assignments/?user_id=${teacher_id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/assignments/?user_id=${teacher_id}`,
 				{ ...assignment },
 			)
 			.then((response) => {

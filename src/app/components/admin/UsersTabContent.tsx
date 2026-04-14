@@ -60,7 +60,7 @@ export default function UsersTabContent({
 		}
 		const response = await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/users?user_id=${session.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/users?user_id=${session.user.id}`,
 				{
 					...newUser,
 					password: newUser.lastName.toLowerCase().trim(),
@@ -98,7 +98,7 @@ export default function UsersTabContent({
 	const handleDelete = async (userId: string) => {
 		await axios
 			.delete(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/users/${userId}?admin_uuid=${session.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/users/${userId}?admin_uuid=${session.user.id}`,
 			)
 			.then(() => {
 				toast.success('User removed from system!');

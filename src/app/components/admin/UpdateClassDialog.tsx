@@ -57,7 +57,7 @@ export default function UpdateClassDialog({
 
 		await axios
 			.put(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/${classId}?admin_uid=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/${classId}?admin_uid=${session?.user.id}`,
 				{
 					name: newClass.name,
 					description: newClass.subject,

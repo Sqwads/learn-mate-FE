@@ -87,7 +87,7 @@ export default function BulkUserUpload({
 		}
 		const response = await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/users?user_id=${userId}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/users?user_id=${userId}`,
 				{
 					firstName,
 					lastName,

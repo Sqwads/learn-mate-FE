@@ -29,7 +29,7 @@ export default function StudentsTab({
 	const handleRemoveStudent = async (student_id: string) => {
 		await axios
 			.delete(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/${class_id}/students/${student_id}?user_id=${staff_id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/${class_id}/students/${student_id}?user_id=${staff_id}`,
 			)
 			.then((response) => {
 				const filstudents = students.filter(

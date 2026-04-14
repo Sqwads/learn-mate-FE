@@ -34,7 +34,7 @@ export default function MonthlyActives({
 	const getNewMau = async (value: string) => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/schools/${school_id}/analytics/mau?admin_id=${user_id}&month=${value}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/schools/${school_id}/analytics/mau?admin_id=${user_id}&month=${value}`,
 			)
 			.then((response) => {
 				setSelectedMAU(response.data);

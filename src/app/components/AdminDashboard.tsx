@@ -84,7 +84,7 @@ export default function AdminDashboard({ user, session }: AdminDashboardProps) {
 		const getUsers = async () => {
 			await axios
 				.get(
-					'https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/users',
+					'https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/users',
 					{
 						params: {
 							user_id: session.user.id,
@@ -129,14 +129,14 @@ export default function AdminDashboard({ user, session }: AdminDashboardProps) {
 	const getAnalytics = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/schools/${user.school_id}/analytics/mau?admin_id=${session.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/schools/${user.school_id}/analytics/mau?admin_id=${session.user.id}`,
 			)
 			.then((response) => setMau(response.data));
 	};
 	const getFeatureUsage = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/admin/schools/${user.school_id}/analytics/feature-usage?admin_id=${session.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/schools/${user.school_id}/analytics/feature-usage?admin_id=${session.user.id}`,
 			)
 			.then((response) => setFeatureUsage(response.data));
 	};

@@ -42,7 +42,7 @@ function App() {
 	const getUserData = async (token: string) => {
 		const response = await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/auth/me?user_id=${token}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/auth/me?user_id=${token}`,
 			)
 			.then(function (response) {
 				return response.data as unknown as responseUserData;
@@ -94,7 +94,7 @@ function App() {
 		return (
 			<>
 				<TeacherDashboard user={currentUser} session={session} />
-				<Toaster position='top-center' />
+				<Toaster position='top-center' expand />
 			</>
 		);
 	}

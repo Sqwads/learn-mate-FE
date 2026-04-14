@@ -31,7 +31,7 @@ export default function UploadAssignmentCard({
 		setLoading(true);
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/submissions/?user_id=${userId}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/submissions/?user_id=${userId}`,
 				{
 					assignment_id: assignmentId,
 					class_id: classId,

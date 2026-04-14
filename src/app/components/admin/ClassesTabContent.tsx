@@ -82,7 +82,7 @@ export default function ClassesTabContent({
 		const getClasses = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/?user_id=${session?.user.id}&role=admin`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/?user_id=${session?.user.id}&role=admin`,
 				)
 				.then((response) => {
 					// console.log(response.data);
@@ -101,7 +101,7 @@ export default function ClassesTabContent({
 
 		try {
 			const response = await axios.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/auth/me?user_id=${id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/auth/me?user_id=${id}`,
 			);
 			const fullName = response.data.full_name;
 
@@ -132,7 +132,7 @@ export default function ClassesTabContent({
 
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes?user_id=${session?.user.id}`,
 				{
 					name: newClass.name,
 					description: newClass.subject,
@@ -156,7 +156,7 @@ export default function ClassesTabContent({
 	const handleDelete = async (id: string) => {
 		await axios
 			.delete(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/classes/${id}/?user_id=${session?.user.id}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/classes/${id}/?user_id=${session?.user.id}`,
 			)
 			.then(() => {
 				handleChangeKey();

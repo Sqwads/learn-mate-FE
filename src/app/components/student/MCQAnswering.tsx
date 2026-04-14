@@ -69,7 +69,7 @@ export default function MCQAnswering({
 
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/submissions/?user_id=${userId}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/submissions/?user_id=${userId}`,
 				{
 					assignment_id: assignmentId,
 					class_id: classId,
@@ -95,7 +95,7 @@ export default function MCQAnswering({
 		toast.success('Grading...');
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/grades/?user_id=${userId}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/grades/?user_id=${userId}`,
 				{
 					'submission_id': submissionId,
 					'grade': score,

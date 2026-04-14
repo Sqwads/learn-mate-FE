@@ -46,7 +46,7 @@ export default function TeacherSumissionView({
 		const getSubmissions = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/submissions/assignment/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/submissions/assignment/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
 				)
 				.then((response) => {
 					setSubmissions(response.data);
@@ -58,7 +58,7 @@ export default function TeacherSumissionView({
 	const getGrades = async () => {
 		await axios
 			.get(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/grades/assignment/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/grades/assignment/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
 			)
 			.then((response) => {
 				setMarks(response.data);
@@ -66,7 +66,7 @@ export default function TeacherSumissionView({
 	};
 	const handleDelete = async () => {
 		await axios.delete(
-			`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/assignments/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
+			`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/assignments/${selectedAssignment.id}?user_id=${selectedAssignment.created_by}`,
 		);
 
 		toast.success('Assignment deleted!');
@@ -81,7 +81,7 @@ export default function TeacherSumissionView({
 		}
 		await axios
 			.post(
-				`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/grades/?user_id=${selectedAssignment.created_by}`,
+				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/grades/?user_id=${selectedAssignment.created_by}`,
 				{
 					'submission_id': submissionId,
 					'grade': submissionGrade,

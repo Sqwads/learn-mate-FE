@@ -122,7 +122,7 @@ export default function PlatformAnalytics({ user_id }: { user_id: string }) {
 		const getSchoolAnalytic = async () => {
 			await axios
 				.get(
-					`https://learnmate-backend-tochukwuihejirika5532-0n5c5ioa.leapcell.dev/superuser/analytics/platform?user_id=${user_id}`,
+					`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/superuser/analytics/platform?user_id=${user_id}`,
 				)
 				.then((response) => {
 					setAnalytics(response.data);
