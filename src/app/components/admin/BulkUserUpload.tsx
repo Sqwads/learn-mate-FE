@@ -31,19 +31,22 @@ export default function BulkUserUpload({
 }) {
 	const [isCreateUserDialogOpen, setIsCreateUserDialogOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
+	const [uploadErrors, setUploadErrors] = useState<{ email: string; error: string }[]>([]);
 
 	const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 		if (!event.target.files) return;
 
 		const file = event.target.files[0] as any;
+		const target = event.target;
 
 		setLoading(true);
+		setUploadErrors([]);
 		Papa.parse(file, {
 			skipEmptyLines: true,
 			header: true,
 			complete: async function (results) {
 				if (results.errors.length > 0) {
-					toast.error('Error creating bulk users', {
+					toast.error('Error parsing CSV', {
 						description: `${JSON.stringify(results.errors)}`,
 					});
 				}
@@ -58,15 +61,37 @@ export default function BulkUserUpload({
 						}),
 					),
 				)
-					.then(() => {
-						toast.success('All students created');
-						onChange();
+					.then((uploadResults) => {
+						const validResults = uploadResults.filter(Boolean);
+						const successes = validResults.filter((r: any) => r.success);
+						const failures = validResults.filter((r: any) => !r.success);
+
+						if (failures.length > 0) {
+							setUploadErrors(
+								failures.map((f: any) => ({
+									email: f.email || 'Unknown',
+									error: String(f.error || 'Unknown error'),
+								}))
+							);
+							if (successes.length > 0) {
+								toast.success(`Successfully created ${successes.length} users. Follow the prompt to review the failures.`);
+							}
+						} else {
+							if (successes.length > 0) {
+								toast.success(`Successfully created ${successes.length} users`);
+							}
+							setIsCreateUserDialogOpen(false);
+							onChange();
+						}
+
 					})
 					.catch((error) => {
 						console.error('Error creating students:', error);
+						toast.error('An unexpected error occurred during bulk upload');
 					})
 					.finally(() => {
 						setLoading(false);
+						if (target) target.value = '';
 					});
 			},
 		});
@@ -83,10 +108,10 @@ export default function BulkUserUpload({
 		email: string;
 	}) => {
 		if (!firstName || !email || !role || !lastName) {
-			return;
+			return null;
 		}
-		const response = await axios
-			.post(
+		try {
+			await axios.post(
 				`https://learn-mate--sqwads9849-s5ig82ke.leapcell.dev/admin/users?user_id=${userId}`,
 				{
 					firstName,
@@ -103,21 +128,23 @@ export default function BulkUserUpload({
 						'Content-Type': 'application/json',
 					},
 				},
-			)
-			.then(function (response) {})
-			.catch(function (error) {
-				toast.error('Error creating new user', {
-					description: error?.response?.data?.detail,
-				});
-				return null;
-			});
-		setIsCreateUserDialogOpen(false);
-		// onChange();
+			);
+			return { success: true, email };
+		} catch (error: any) {
+			return {
+				success: false,
+				error: error?.response?.data?.detail || 'Error creating user',
+				email,
+			};
+		}
 	};
 	return (
 		<Dialog
 			open={isCreateUserDialogOpen}
-			onOpenChange={setIsCreateUserDialogOpen}
+			onOpenChange={(open) => {
+				setIsCreateUserDialogOpen(open);
+				if (!open) setUploadErrors([]);
+			}}
 		>
 			<DialogTrigger>
 				<Button>
@@ -156,6 +183,18 @@ export default function BulkUserUpload({
 								accept={acceptableFileType}
 								disabled={loading}
 							/>
+							{uploadErrors.length > 0 && (
+								<div className='mt-4 p-3 bg-red-50 text-red-800 rounded-md max-h-48 overflow-y-auto border border-red-200'>
+									<p className='font-semibold mb-2'>Upload Errors ({uploadErrors.length}):</p>
+									<ul className='list-disc pl-5 space-y-1 text-sm'>
+										{uploadErrors.map((err, idx) => (
+											<li key={idx}>
+												<strong>{err.email}</strong>: {err.error}
+											</li>
+										))}
+									</ul>
+								</div>
+							)}
 						</div>
 					)}
 				</div>
