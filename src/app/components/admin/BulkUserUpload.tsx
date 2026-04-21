@@ -31,7 +31,9 @@ export default function BulkUserUpload({
 }) {
 	const [isCreateUserDialogOpen, setIsCreateUserDialogOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
-	const [uploadErrors, setUploadErrors] = useState<{ email: string; error: string }[]>([]);
+	const [uploadErrors, setUploadErrors] = useState<
+		{ email: string; error: string }[]
+	>([]);
 
 	const onFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 		if (!event.target.files) return;
@@ -56,7 +58,7 @@ export default function BulkUserUpload({
 						handleCreateUser({
 							firstName: student.firstName,
 							lastName: student.lastName,
-							role: student.role,
+							role: student.role.toLowerCase().trim(),
 							email: student.email,
 						}),
 					),
@@ -71,10 +73,12 @@ export default function BulkUserUpload({
 								failures.map((f: any) => ({
 									email: f.email || 'Unknown',
 									error: String(f.error || 'Unknown error'),
-								}))
+								})),
 							);
 							if (successes.length > 0) {
-								toast.success(`Successfully created ${successes.length} users. Follow the prompt to review the failures.`);
+								toast.success(
+									`Successfully created ${successes.length} users. Follow the prompt to review the failures.`,
+								);
 							}
 						} else {
 							if (successes.length > 0) {
@@ -83,7 +87,6 @@ export default function BulkUserUpload({
 							setIsCreateUserDialogOpen(false);
 							onChange();
 						}
-
 					})
 					.catch((error) => {
 						console.error('Error creating students:', error);
@@ -185,7 +188,9 @@ export default function BulkUserUpload({
 							/>
 							{uploadErrors.length > 0 && (
 								<div className='mt-4 p-3 bg-red-50 text-red-800 rounded-md max-h-48 overflow-y-auto border border-red-200'>
-									<p className='font-semibold mb-2'>Upload Errors ({uploadErrors.length}):</p>
+									<p className='font-semibold mb-2'>
+										Upload Errors ({uploadErrors.length}):
+									</p>
 									<ul className='list-disc pl-5 space-y-1 text-sm'>
 										{uploadErrors.map((err, idx) => (
 											<li key={idx}>
