@@ -96,6 +96,16 @@ export default function LoginPage({ onLogin, onSignUp }: LoginPageProps) {
 					>
 						Sign up as school administrator
 					</p>
+					<div className='mt-4 text-center'>
+						<a
+							href='https://forms.gle/nMMYDJPivim3BhT99'
+							target='_blank'
+							rel='noopener noreferrer'
+							className='text-sm text-gray-600 hover:text-blue-600 underline transition-colors'
+						>
+							Share your experience and help us improve LearnMate!
+						</a>
+					</div>
 				</CardContent>
 			</Card>
 		</div>
