@@ -10,7 +10,8 @@ import {
 	CardTitle,
 } from './ui/card';
 import { UserRole, UserType } from '../App';
-import { GraduationCap, Loader2 } from 'lucide-react';
+import { GraduationCap, Loader2, Info } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { createClient } from '@supabase/supabase-js';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -102,7 +103,25 @@ export default function SignUpPage({ onLogin, onSignUp }: LoginPageProps) {
 					<p>Creating account...</p>
 				</div>
 			)}
-			<Card className='w-full max-w-md'>
+			<Card className='w-full max-w-md relative'>
+				<div className='absolute right-4 top-4'>
+					<Tooltip>
+						<TooltipTrigger asChild>
+							<a
+								href='https://drive.google.com/file/d/1hmywR8Vyc6NVgjg6zPZNYA1W9Yo8vYO1/view?usp=sharing'
+								target='_blank'
+								rel='noopener noreferrer'
+								className='flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors'
+							>
+								<Info className='h-4 w-4' />
+								<span>User Manual</span>
+							</a>
+						</TooltipTrigger>
+						<TooltipContent>
+							<p>User Manual</p>
+						</TooltipContent>
+					</Tooltip>
+				</div>
 				<CardHeader className='space-y-1 text-center'>
 					<div className='flex justify-center mb-4'>
 						<div className='p-3 bg-blue-600 rounded-full'>
