@@ -8,6 +8,7 @@ import { createClient, Session, User } from '@supabase/supabase-js';
 import { Toaster } from 'sonner';
 import SignUpPage from './components/SignUpPage';
 import SuperAdminDashboard from './components/superadmin/SuperAdmin';
+import LandingPage from './components/LandingPage';
 
 export type UserRole = 'teacher' | 'student' | 'admin';
 
@@ -38,6 +39,7 @@ function App() {
 	const [currentUser, setCurrentUser] = useState<responseUserData | null>(null);
 	const [session, setSession] = useState<Session | null>(null);
 	const [signUp, setSignUp] = useState(false);
+	const [showLandingPage, setShowLandingPage] = useState(true);
 
 	const getUserData = async (token: string) => {
 		const response = await axios
@@ -81,7 +83,18 @@ function App() {
 	if (!currentUser || !session) {
 		return (
 			<>
-				{signUp ? (
+				{showLandingPage ? (
+					<LandingPage 
+						onGoToLogin={() => {
+							setSignUp(false);
+							setShowLandingPage(false);
+						}}
+						onGoToSignUp={() => {
+							setSignUp(true);
+							setShowLandingPage(false);
+						}}
+					/>
+				) : signUp ? (
 					<SignUpPage onLogin={handleLogin} onSignUp={setSignUp} />
 				) : (
 					<LoginPage onLogin={handleLogin} onSignUp={setSignUp} />
