@@ -10,7 +10,7 @@ import {
 	CardTitle,
 } from './ui/card';
 import { UserRole, UserType } from '../App';
-import { GraduationCap, Loader2, Info } from 'lucide-react';
+import { GraduationCap, Loader2, Info, Eye, EyeOff } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { createClient } from '@supabase/supabase-js';
 import axios from 'axios';
@@ -33,6 +33,7 @@ export default function SignUpPage({ onLogin, onSignUp }: LoginPageProps) {
 	const [schoolName, setSchoolName] = useState('');
 	const [error, setError] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -175,14 +176,23 @@ export default function SignUpPage({ onLogin, onSignUp }: LoginPageProps) {
 						</div>
 						<div className='space-y-2'>
 							<Label htmlFor='password'>Password</Label>
-							<Input
-								id='password'
-								type='password'
-								placeholder='Enter your password'
-								value={password}
-								onChange={(e) => setPassword(e.target.value)}
-								required
-							/>
+							<div className='relative'>
+								<Input
+									id='password'
+									type={showPassword ? 'text' : 'password'}
+									placeholder='Enter your password'
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									required
+								/>
+								<button
+									type="button"
+									onClick={() => setShowPassword(!showPassword)}
+									className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
+								>
+									{showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+								</button>
+							</div>
 						</div>
 
 						<Button type='submit' className='w-full cursor-pointer'>
